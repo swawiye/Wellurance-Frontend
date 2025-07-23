@@ -15,17 +15,36 @@ function About() {
     };
     return (
         <div>
-            {/* Header/Navigation */}
-            <div className="relative h-screen w-full bg-black flex items-center justify-center" style={bg}>
-              <h1 className="text-2xl font-bold text-amber-600"><a href="/">WELLURANCE</a></h1>
+            <div
+              className="relative h-screen w-full bg-black flex flex-col items-center justify-center space-y-6"
+              style={bg}
+            >
+              <h1 className="text-2xl font-bold text-amber-600">
+                <a href="/">WELLURANCE</a>
+              </h1>
               <div className="flex space-x-6">
-                <NavLink to="/services" className="text-black hover:text-amber-600">
+                <NavLink
+                  to="/services"
+                  className={({ isActive }) =>
+                    `text-black hover:text-amber-600 ${isActive ? 'underline underline-offset-4 decoration-amber-500 text-amber-600' : ''}`
+                  }
+                >
                   Emergency Services
                 </NavLink>
-                <NavLink to="/about" className="text-black hover:text-amber-600">
+                <NavLink
+                  to="/about"
+                  className={({ isActive }) =>
+                    `text-black hover:text-amber-600 ${isActive ? 'underline underline-offset-4  decoration-amber-500 text-amber-600' : ''}`
+                  }
+                >
                   About Us
                 </NavLink>
-                <NavLink to="/profile" className="text-black hover:text-amber-600">
+                <NavLink
+                  to="/profile"
+                  className={({ isActive }) =>
+                    `text-black hover:text-amber-600 ${isActive ? 'underline underline-offset-4  decoration-amber-500 text-amber-600' : ''}`
+                  }
+                >
                   Profile
                 </NavLink>
               </div>
@@ -36,17 +55,31 @@ function About() {
                   OUR STORY
                 </h2>
                 
-                <div className="flex justify-center mt-10"></div>
+                <div className="flex justify-center mt-10">
+                    <p>
+                    Wellurance: Built to Save Lives
+                    In emergencies, every second matters. But too often, delays and disjointed systems cost lives.
+                    Wellurance was born to change that. It is a modern, full-stack emergency services platform, 
+                    that connects healthcare and firefighting units in real-time -whether in cities, towns, or rural 
+                    areas. Wellurance enables people to report emergencies instantly. Dispatchers respond with live, 
+                    map-based dashboards that assign and track responders efficiently. This results in faster response
+                    times, smarter resource use and safer communities. Wellurance isn’t just software. It’s a life-saving 
+                    network engineered for speed, built on trust, and designed to protect everyone, everywhere.
+                    </p>
+                </div>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 mx-auto max-w-6xl gap-4 mt-5 mb-7">
-                <div class="px-10 py-10">
-                    <img src="src\assets\Paramedics.jpg"/>
+                <div class="px-10 py-10 mt-20">
+                    <img src="src\assets\community.jpg"/>
                 </div>
                 <div class="border border-amber-50 px-10 py-10 rounded-xl bg-amber-50">
                     <h3 class="font-semibold text-2xl text-red-600 text-center mt-5">CONTACT US</h3>
-                    <p class="text-md text-black text-center mt-10">Phone: +254 712 345 678</p>
-                    <p class="text-md text-black text-center mt-10">Email address: wellurance@gmail.com</p>
+                    <p class="text-md text-black text-center">Phone: +254 712 345 678</p>
+                    <p class="text-md text-black text-center">Email address: wellurance@gmail.com</p>
+                    <div class="px-10 py-10">
+                        <img src="src\assets\wellurance location.png"/>
+                    </div>
                 </div>
             </div>
 

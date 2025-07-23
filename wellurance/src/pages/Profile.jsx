@@ -15,17 +15,41 @@ function Profile() {
     };  
     return (
       <div>
-        {/* Header */}
-        <div className="relative h-screen w-full bg-black flex flex-col items-center justify-center space-y-6" style={bg}>
-          <h1 className="text-2xl font-bold text-amber-600"><a href="/">WELLURANCE</a></h1>
+        <div
+          className="relative h-screen w-full bg-black flex flex-col items-center justify-center space-y-6"
+          style={bg}
+        >
+          <h1 className="text-2xl font-bold text-amber-600">
+            <a href="/">WELLURANCE</a>
+          </h1>
           <div className="flex space-x-6">
-            <NavLink to="/services" className="text-black hover:text-amber-600">Emergency Services</NavLink>
-            <NavLink to="/about" className="text-black hover:text-amber-600">About Us</NavLink>
-            <NavLink to="/profile" className="text-black hover:text-amber-600">Profile</NavLink>
+            <NavLink
+              to="/services"
+              className={({ isActive }) =>
+                `text-black hover:text-amber-600 ${isActive ? 'underline underline-offset-4 decoration-amber-500 text-amber-600' : ''}`
+              }
+            >
+              Emergency Services
+            </NavLink>
+            <NavLink
+              to="/about"
+              className={({ isActive }) =>
+                `text-black hover:text-amber-600 ${isActive ? 'underline underline-offset-4  decoration-amber-500 text-amber-600' : ''}`
+              }
+            >
+              About Us
+            </NavLink>
+            <NavLink
+              to="/profile"
+              className={({ isActive }) =>
+                `text-black hover:text-amber-600 ${isActive ? 'underline underline-offset-4  decoration-amber-500 text-amber-600' : ''}`
+              }
+            >
+              Profile
+            </NavLink>
           </div>
-        </div>  
-
-        {/* Profile Card */}
+        </div>
+ 
         <div className="bg-gray-50 bg-opacity-90 w-full px-6 py-16 flex justify-center">
           <div className="border border-amber-200 bg-white p-10 rounded-xl shadow-md w-full max-w-2xl hover:shadow-lg transition duration-300">
             <h2 className="text-3xl font-bold text-amber-600 mb-6 text-center">User Profile</h2>    

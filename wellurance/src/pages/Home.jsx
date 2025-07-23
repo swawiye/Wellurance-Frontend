@@ -15,17 +15,36 @@ function Home() {
     };
     return (
         <div>
-            {/* Header/Navigation */}
-            <div className="relative h-screen w-full bg-black flex items-center justify-center" style={bg}>
-              <h1 className="text-2xl font-bold text-amber-600"><a href="/">WELLURANCE</a></h1>
+            <div
+              className="relative h-screen w-full bg-black flex flex-col items-center justify-center space-y-6"
+              style={bg}
+            >
+              <h1 className="text-2xl font-bold text-amber-600">
+                <a href="/">WELLURANCE</a>
+              </h1>
               <div className="flex space-x-6">
-                <NavLink to="/services" className="text-black hover:text-amber-600">
+                <NavLink
+                  to="/services"
+                  className={({ isActive }) =>
+                    `text-black hover:text-amber-600 ${isActive ? 'underline underline-offset-4 decoration-amber-500 text-amber-600' : ''}`
+                  }
+                >
                   Emergency Services
                 </NavLink>
-                <NavLink to="/about" className="text-black hover:text-amber-600">
+                <NavLink
+                  to="/about"
+                  className={({ isActive }) =>
+                    `text-black hover:text-amber-600 ${isActive ? 'underline underline-offset-4  decoration-amber-500 text-amber-600' : ''}`
+                  }
+                >
                   About Us
                 </NavLink>
-                <NavLink to="/profile" className="text-black hover:text-amber-600">
+                <NavLink
+                  to="/profile"
+                  className={({ isActive }) =>
+                    `text-black hover:text-amber-600 ${isActive ? 'underline underline-offset-4  decoration-amber-500 text-amber-600' : ''}`
+                  }
+                >
                   Profile
                 </NavLink>
               </div>
