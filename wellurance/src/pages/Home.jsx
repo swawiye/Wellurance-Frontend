@@ -1,77 +1,82 @@
-import { BrowserRouter as NavLink } from 'react-router-dom';
+import {NavLink} from 'react-router-dom';
 import bgImg from '../assets/Wellurance Landing image.png';
 
 function Home() {
     const bg = {
-            backgroundImage: `url(${bgImg})`,
-            height: "100vh",
-            marginTop: "-70px",
-            backgroundSize: "cover",
-            backgroundRepeat: "no-repeat",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
+      backgroundImage: `url(${bgImg})`, //`linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(${bgImg})`,
+      backgroundSize: 'cover',
+      backgroundPosition: 'center',
+      height: '60vh', 
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'center',
+      alignItems: 'center',
+      animation: 'fadeIn 1.5s ease-in-out',
     };
     return (
         <div>
-            <div style={bg}>
+            {/* Header/Navigation */}
+            <div className="relative h-screen w-full bg-black flex items-center justify-center" style={bg}>
+              <h1 className="text-2xl font-bold text-amber-600"><a href="/">WELLURANCE</a></h1>
+              <div className="flex space-x-6">
+                <NavLink to="/emergency-services" className="text-black hover:text-amber-600">
+                  Emergency Services
+                </NavLink>
+                <NavLink to="/about" className="text-black hover:text-amber-600">
+                  About Us
+                </NavLink>
+                <NavLink to="/profile" className="text-black hover:text-amber-600">
+                  Profile
+                </NavLink>
+              </div>
+            </div>
+
+            <div className="bg-gray-50 bg-opacity-90 max-w-full w-full px-10 py-10">
+                <h2 className="text-2xl font-bold text-center mb-6 text-red-600 mt-5">
+                  ENTER YOUR EMERGENCY VICTIM'S DETAILS
+                </h2>
+                
+            <div className="flex justify-center mt-10">
+              <form className="space-y-6 w-[500px] text-center">
                 <div>
-                    <h3 className="text-white font-bold text-2xl text-center">WELLURANCE</h3>
-                    <p className="text-amber-600 font-bold text-xl">We assure you of your well-being</p>
-                </div>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 mx-auto max-w-6xl gap-4 mt-5">
-                <div class="px-10 py-10">
-                    <img src="src\assets\Firefighters.jpg"/>
-                </div>
-            
-                <div class="border border-amber-50 px-10 py-10 rounded-xl bg-amber-50">
-                    <h3 class="font-semibold text-2xl text-amber-600 text-center mt-5">Firefighters</h3>
-                    <p class="text-md text-black text-center mt-10">
-                        Firefighters respond to fires, accidents, and other emergencies to protect 
-                        lives, property, and the environment. They rescue people from dangerous situations, 
-                        extinguish fires, and provide first aid when needed. Firefighters also work closely with 
-                        ambulance teams and other responders to handle emergencies quickly and safely. Through our 
-                        real-time emergency platform, they’re dispatched instantly and tracked live to ensure the 
-                        fastest possible response.
-                    </p>
-                </div>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 mx-auto max-w-6xl gap-4 mt-5">
-                <div class="border border-amber-50 px-10 py-10 rounded-xl bg-amber-50">
-                    <h3 class="font-semibold text-2xl text-amber-600 text-center mt-5">Ambulance services and Paramedics</h3>
-                    <p class="text-md text-black text-center mt-10">
-                        Paramedics and ambulance teams provide urgent medical care during emergencies. They respond quickly to emregncy calls, 
-                        treat injuries or illnesses on-site, and transport patients safely to hospitals. Working closely with firefighters and 
-                        other responders, paramedics help save lives with fast, expert care. Our platform helps them reach the scene faster with 
-                        live tracking and real-time coordination for better outcomes.
-                    </p>
+                  <label className="block text-sm font-medium mb-1 text-left">FULL NAME</label>
+                  <input 
+                    type="text" 
+                    className="w-full p-2 border border-white bg-white" 
+                    placeholder="John Doe" 
+                    required 
+                  />
                 </div>
 
-                <div class="px-10 py-10">
-                    <img src="src\assets\Paramedics.jpg"/>
+                <div>
+                  <label className="block text-sm font-medium mb-1 text-left">LOCATION</label>
+                  <input 
+                    type="text" 
+                    className="w-full p-2 border border-white bg-white" 
+                    placeholder="123 Main St, City" 
+                    required 
+                  />
                 </div>
+
+                <div>
+                  <label className="block text-sm font-medium mb-1 text-left">EMERGENCY</label>
+                  <select className="w-full p-2 border border-white bg-white">
+                    <option>Medical Emergency</option>
+                    <option>Fire Outbreak</option>
+                    <option>Accident</option>
+                    <option>Other</option>
+                  </select>
+                </div>
+
+                <button 
+                  type="submit" 
+                  className="w-60 bg-red-600 text-white py-3 rounded-lg font-bold hover:bg-amber-600 transition"
+                >
+                  HELP
+                </button>
+              </form>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-1 mx-auto max-w-6xl gap-4 mt-5">
-                <div class="border border-gray-50 px-10 py-10 rounded-xl bg-gray-50">
-                    <h3 class="font-semibold text-2xl text-amber-600 text-center mt-5">What is Wellurance?</h3>
-                    <p class="text-xl text-black text-center mt-10">
-                        Wellurance is an emergency services platform is built to streamline real-time coordination between 
-                        ambulance teams, healthcare providers, and firefighting units. It allows you to report emergencies 
-                        instantly, while dispatchers manage and track responders live through intuitive, map-based dashboards. 
-                        By enabling faster response times, smarter resource deployment, and stronger inter-agency collaboration, 
-                        Wellurance enhances public safety—while upholding the highest standards of data security and regulatory 
-                        compliance.
-                    </p>
-                </div>
-            </div>
-            
-            <div class="flex justify-center mt-5 mb-6">
-                <div class="px-10 py-10 rounded-xl bg-amber-600 w-60 items-center flex justify-center hover:bg-amber-500 transition">
-                    <button class="font-semibold text-lg text-white text-center">Get Started to receive emergency services today</button>
-                </div>
             </div>
 
             <footer className="bg-gray-900 text-white py-12 px-4">
@@ -93,6 +98,7 @@ function Home() {
                             <li><a href="/" className="text-gray-300 hover:text-amber-600 transition">Home</a></li>
                             <li><a href="/services" className="text-gray-300 hover:text-amber-600 transition">Services</a></li>
                             <li><a href="/about" className="text-gray-300 hover:text-amber-600 transition">About Us</a></li>
+                            <li><a href="/dashboard" className="text-gray-300 hover:text-amber-600 transition">Dashboard</a></li>
                         </ul>
                     </div>
 

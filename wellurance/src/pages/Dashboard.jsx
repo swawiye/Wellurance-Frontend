@@ -79,12 +79,18 @@ function Dashboard() {
                     <div className="space-y-4">
                         <h3 className="text-amber-600 font-bold text-2xl">WELLURANCE</h3>
                         <p className="text-gray-300">We assure you of your well-being</p>
-                        <div className="flex space-x-4">
-                            {/* Social media icons would go here */}
-                            <a href="#" className="text-gray-400 hover:text-amber-600 transition">
-                                <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">...</svg>
-                            </a>
-                        </div>
+                    </div>
+
+                    <div className="space-y-4">
+                        <h4 className="text-amber-600 font-semibold text-lg">Quick Links</h4>
+                        <ul className="space-y-2">
+                            <li>
+                                {/* Social media icons would go here */}
+                                <a href="#" className="text-gray-400 hover:text-amber-600 transition">
+                                    <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">...</svg>
+                                </a>
+                            </li>
+                        </ul>
                     </div>
 
                     <div className="space-y-4">
