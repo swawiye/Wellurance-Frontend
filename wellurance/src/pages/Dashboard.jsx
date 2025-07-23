@@ -1,4 +1,4 @@
-import { BrowserRouter as NavLink } from 'react-router-dom';
+import { BrowserRouter as NavLink, Link } from 'react-router-dom';
 import bgImg from '../assets/Wellurance Landing image.png';
 
 function Dashboard() {
@@ -70,7 +70,7 @@ function Dashboard() {
             
             <div class="flex justify-center mt-5 mb-6">
                 <div class="px-10 py-10 rounded-xl bg-amber-600 w-60 items-center flex justify-center hover:bg-amber-500 transition">
-                    <button class="font-semibold text-lg text-white text-center"><a href="/register">Get Started to receive emergency services today</a></button>
+                    <button class="font-semibold text-lg text-white text-center"><Link to="/register">Get Started to receive emergency services today</Link></button>
                 </div>
             </div>
 
