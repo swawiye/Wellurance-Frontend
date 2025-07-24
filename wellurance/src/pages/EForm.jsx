@@ -21,15 +21,16 @@ function EmergencyForm() {
         await axios.post('/api/reports/', {
           address: form.address,
           description: form.description,
+          emergency_type: form.emergency_type, // if you add this to your model
           status: 'REPORTED',
           is_verified: false,
         }, {
           headers: { Authorization: `Token ${token}` }
         });
         alert('Emergency reported!');
-      } catch (err) {
-        console.error(err);
-        alert('Failed to report emergency.');
+        } catch (err) {
+          console.error(err);
+          alert('Failed to report emergency.');
       }
     };
 
