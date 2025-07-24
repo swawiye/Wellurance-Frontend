@@ -27,14 +27,14 @@ const SignUp = () => {
       console.log('Registration successful', response.data);
       navigate('/login');
     } catch (err) {
-      console.error('Registration failed:', err);
+      console.error('Registration failed:', err.response?.data || err.message);
       alert('Registration failed, please try again.');
     }
   };
 
   return (
     <div className="relative h-screen w-full bg-gray-900 flex flex-col items-center justify-center space-y-6">
-      <h1 className="text-2xl font-bold text-amber-600">
+      <h1 className="text-2xl font-bold text-amber-600 mt-5">
         <a href="/">WELLURANCE</a>
       </h1>
       <form onSubmit={handleSubmit} className="bg-white p-8 rounded shadow-md w-80 space-y-4">
@@ -110,6 +110,15 @@ const SignUp = () => {
           Register
         </button>
       </form>
+
+      <div className="relative h-screen w-full bg-gray-900 flex flex-col items-center justify-center space-y-6">
+        <p className="text-sm text-white mt-2">
+          Already have an account?{' '}
+          <Link to="/login" className="text-amber-500 hover:underline">
+            Log in
+          </Link>
+        </p>
+      </div>
     </div>
   );
 };

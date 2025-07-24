@@ -20,14 +20,14 @@ function Dashboard() {
                     <p className="text-amber-600 font-bold text-xl">We assure you of your well-being</p>
                 </div>
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 mx-auto max-w-6xl gap-4 mt-5">
-                <div class="px-10 py-10">
+            <div className="grid grid-cols-1 md:grid-cols-2 mx-auto max-w-6xl gap-4 mt-5">
+                <div className="px-10 py-10">
                     <img src="src\assets\Firefighters.jpg"/>
                 </div>
             
-                <div class="border border-amber-50 px-10 py-10 rounded-xl bg-amber-50">
-                    <h3 class="font-semibold text-2xl text-amber-600 text-center mt-5">Firefighters</h3>
-                    <p class="text-md text-black text-center mt-10">
+                <div className="border border-amber-50 px-10 py-10 rounded-xl bg-amber-50">
+                    <h3 className="font-semibold text-2xl text-amber-600 text-center mt-5">Firefighters</h3>
+                    <p className="text-md text-black text-center mt-10">
                         Firefighters respond to fires, accidents, and other emergencies to protect 
                         lives, property, and the environment. They rescue people from dangerous situations, 
                         extinguish fires, and provide first aid when needed. Firefighters also work closely with 
@@ -38,10 +38,10 @@ function Dashboard() {
                 </div>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 mx-auto max-w-6xl gap-4 mt-5">
-                <div class="border border-amber-50 px-10 py-10 rounded-xl bg-amber-50">
-                    <h3 class="font-semibold text-2xl text-amber-600 text-center mt-5">Ambulance services and Paramedics</h3>
-                    <p class="text-md text-black text-center mt-10">
+            <div className="grid grid-cols-1 md:grid-cols-2 mx-auto max-w-6xl gap-4 mt-5">
+                <div className="border border-amber-50 px-10 py-10 rounded-xl bg-amber-50">
+                    <h3 className="font-semibold text-2xl text-amber-600 text-center mt-5">Ambulance services and Paramedics</h3>
+                    <p className="text-md text-black text-center mt-10">
                         Paramedics and ambulance teams provide urgent medical care during emergencies. They respond quickly to emregncy calls, 
                         treat injuries or illnesses on-site, and transport patients safely to hospitals. Working closely with firefighters and 
                         other responders, paramedics help save lives with fast, expert care. Our platform helps them reach the scene faster with 
@@ -49,15 +49,15 @@ function Dashboard() {
                     </p>
                 </div>
 
-                <div class="px-10 py-10">
+                <div className="px-10 py-10">
                     <img src="src\assets\Paramedics.jpg"/>
                 </div>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-1 mx-auto max-w-6xl gap-4 mt-5">
-                <div class="border border-gray-50 px-10 py-10 rounded-xl bg-gray-50">
-                    <h3 class="font-semibold text-2xl text-amber-600 text-center mt-5">What is Wellurance?</h3>
-                    <p class="text-xl text-black text-center mt-10">
+            <div className="grid grid-cols-1 md:grid-cols-1 mx-auto max-w-6xl gap-4 mt-5">
+                <div className="border border-gray-50 px-10 py-10 rounded-xl bg-gray-50">
+                    <h3 className="font-semibold text-2xl text-amber-600 text-center mt-5">What is Wellurance?</h3>
+                    <p className="text-xl text-black text-center mt-10">
                         Wellurance is an emergency services platform is built to streamline real-time coordination between 
                         ambulance teams, healthcare providers, and firefighting units. It allows you to report emergencies 
                         instantly, while dispatchers manage and track responders live through intuitive, map-based dashboards. 
@@ -68,9 +68,9 @@ function Dashboard() {
                 </div>
             </div>
             
-            <div class="flex justify-center mt-5 mb-6">
-                <div class="px-10 py-10 rounded-xl bg-amber-600 w-60 items-center flex justify-center hover:bg-amber-500 transition">
-                    <button class="font-semibold text-lg text-white text-center"><Link to="/register">Get Started to receive emergency services today</Link></button>
+            <div className="flex justify-center mt-5 mb-6">
+                <div className="px-10 py-10 rounded-xl bg-amber-600 w-60 items-center flex justify-center hover:bg-amber-500 transition">
+                    <button className="font-semibold text-lg text-white text-center"><Link to="/register">Get Started to receive emergency services today</Link></button>
                 </div>
             </div>
 

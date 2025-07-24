@@ -69,15 +69,15 @@ function About() {
                 </div>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 mx-auto max-w-6xl gap-4 mt-5 mb-7">
-                <div class="px-10 py-10 mt-20">
+            <div className="grid grid-cols-1 md:grid-cols-2 mx-auto max-w-6xl gap-4 mt-5 mb-7">
+                <div className="px-10 py-10 mt-20">
                     <img src="src\assets\community.jpg"/>
                 </div>
-                <div class="border border-amber-50 px-10 py-10 rounded-xl bg-amber-50">
-                    <h3 class="font-semibold text-2xl text-red-600 text-center mt-5">CONTACT US</h3>
-                    <p class="text-md text-black text-center">Phone: +254 712 345 678</p>
-                    <p class="text-md text-black text-center">Email address: wellurance@gmail.com</p>
-                    <div class="px-10 py-10">
+                <div className="border border-amber-50 px-10 py-10 rounded-xl bg-amber-50">
+                    <h3 className="font-semibold text-2xl text-red-600 text-center mt-5">CONTACT US</h3>
+                    <p className="text-md text-black text-center">Phone: +254 712 345 678</p>
+                    <p className="text-md text-black text-center">Email address: wellurance@gmail.com</p>
+                    <div className="px-10 py-10">
                         <img src="src\assets\wellurance location.png"/>
                     </div>
                 </div>
