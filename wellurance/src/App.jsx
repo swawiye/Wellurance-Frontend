@@ -6,6 +6,7 @@ import About from './pages/About';
 import Profile from './pages/Profile';
 import Login from './pages/LogIn';
 import SignUp from './pages/Register';
+import AdminDash from './pages/AdminDash';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path='/profile' element={<Profile/>}/>
         <Route path='/register' element={<SignUp/>}/>
         <Route path='/login' element={<Login/>}/>
+        <Route path='/admindash' element={<AdminDash/>}/>
       </Routes>
     </Router>
   )

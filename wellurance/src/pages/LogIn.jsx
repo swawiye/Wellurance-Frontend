@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import bgImg from '../assets/Wellurance Landing image.png';
 
 const Login = () => {
@@ -96,7 +96,7 @@ const Login = () => {
             type="submit"
             className="w-full bg-amber-600 text-white py-2 px-4 rounded hover:bg-amber-700"
           >
-            Log In
+            <Link to="/">Log In</Link>
           </button>
         </form>
       </div>

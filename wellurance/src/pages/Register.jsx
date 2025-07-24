@@ -23,10 +23,9 @@ const SignUp = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      // Replace with your actual API endpoint
-      const response = await axios.post('/api/register/', formData);
+      const response = await axios.post('http://127.0.0.1:8000/api/register/', formData);
       console.log('Registration successful', response.data);
-      navigate('/login');  // Redirect to login after successful registration
+      navigate('/login');
     } catch (err) {
       console.error('Registration failed:', err);
       alert('Registration failed, please try again.');
@@ -106,8 +105,9 @@ const SignUp = () => {
         <button
           type="submit"
           className="w-full bg-amber-600 text-white py-2 px-4 rounded hover:bg-amber-700"
+          onClick={handleSubmit}
         >
-          <Link to="/login">Register</Link>
+          Register
         </button>
       </form>
     </div>
