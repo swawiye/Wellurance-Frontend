@@ -1,5 +1,6 @@
 import {NavLink} from 'react-router-dom';
 import bgImg from '../assets/Wellurance Landing image.png';
+import EmergencyForm from './EForm';
 
 function Home() {
     const bg = {
@@ -13,6 +14,7 @@ function Home() {
       alignItems: 'center',
       animation: 'fadeIn 1.5s ease-in-out',
     };
+
     return (
         <div>
             <div
@@ -56,44 +58,7 @@ function Home() {
                 </h2>
                 
             <div className="flex justify-center mt-10">
-              <form className="space-y-6 w-[500px] text-center">
-                <div>
-                  <label className="block text-sm font-medium mb-1 text-left">FULL NAME</label>
-                  <input 
-                    type="text" 
-                    className="w-full p-2 border border-white bg-white" 
-                    placeholder="John Doe" 
-                    required 
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium mb-1 text-left">LOCATION</label>
-                  <input 
-                    type="text" 
-                    className="w-full p-2 border border-white bg-white" 
-                    placeholder="123 Main St, City" 
-                    required 
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium mb-1 text-left">EMERGENCY</label>
-                  <select className="w-full p-2 border border-white bg-white">
-                    <option>Medical Emergency</option>
-                    <option>Fire Outbreak</option>
-                    <option>Accident</option>
-                    <option>Other</option>
-                  </select>
-                </div>
-
-                <button 
-                  type="submit" 
-                  className="w-60 bg-red-600 text-white py-3 rounded-lg font-bold hover:bg-amber-600 transition"
-                >
-                  HELP
-                </button>
-              </form>
+              <EmergencyForm/>
             </div>
 
             </div>

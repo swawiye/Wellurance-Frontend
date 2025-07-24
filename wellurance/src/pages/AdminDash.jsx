@@ -1,5 +1,8 @@
 import { BrowserRouter as NavLink, Link } from 'react-router-dom';
 import bgImg from '../assets/Wellurance Landing image.png';
+import { useContext, useEffect, useState } from 'react';
+import { AuthContext} from './AuthToken';
+import axios from 'axios';
 
 function AdminDash() {
     const bg = {
@@ -12,12 +15,35 @@ function AdminDash() {
             alignItems: "center",
             justifyContent: "center",
     };
+    const { token, user } = useContext(AuthContext);
+    const [emergencies, setEmergencies] = useState([]);
+
+    useEffect(() => {
+    if (user?.role === 'DISPATCHER') {
+      axios.get('/api/reports/', {
+        headers: { Authorization: `Token ${token}` }
+      }).then(res => setEmergencies(res.data));
+    }
+    }, [token, user]);
+
     return (
         <div>
             <div style={bg}>
                 <div>
                     <h3 className="text-white font-bold text-2xl text-center">WELLURANCE</h3>
-                    <p className="text-amber-600 font-bold text-xl">Welcome {username}</p>
+                    <div className="text-amber-600 font-bold text-xl">
+                        <h1>Welcome {user?.username}</h1>
+                            {user?.role === 'DISPATCHER' ? (
+                            emergencies.map(report => (
+                              <div key={report.id}>
+                                <h3>{report.description}</h3>
+                                <p>{report.address}</p>
+                              </div>
+                            ))
+                            ) : (
+                            <p>You are not authorized.</p>
+                            )}
+                    </div>
                 </div>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 mx-auto max-w-6xl gap-4 mt-5">
