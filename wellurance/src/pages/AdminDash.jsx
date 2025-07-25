@@ -1,7 +1,7 @@
 import { BrowserRouter as NavLink, Link } from 'react-router-dom';
 import bgImg from '../assets/Wellurance Landing image.png';
 import { useContext, useEffect, useState } from 'react';
-import { AuthContext} from './AuthToken';
+import { AuthContext} from './AuthContext';
 import axios from 'axios';
 
 function AdminDash() {

@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
 import axios from 'axios';
-import { AuthContext } from './AuthToken';
+import { AuthContext } from './AuthContext';
 
 function EmergencyForm() {
     const { token } = useContext(AuthContext);
@@ -18,10 +18,10 @@ function EmergencyForm() {
     const handleSubmit = async (e) => {
       e.preventDefault();
       try {
-        await axios.post('/api/reports/', {
+        await axios.post('http://127.0.0.1:8000/api/reports/', {
           address: form.address,
           description: form.description,
-          emergency_type: form.emergency_type, // if you add this to your model
+          emergency_type: form.emergency_type, 
           status: 'REPORTED',
           is_verified: false,
         }, {

@@ -1,9 +1,20 @@
-import React, { createContext, useState, useEffect } from 'react';
+import React, {useState, useEffect} from 'react';
+import AuthContext from './AuthContext';
 import axios from 'axios';
 
-export const AuthContext = createContext();
+// const AuthProvider = ({children}) => {
+//     const [token, setToken] = useState(localStorage.getItem('token'));
 
-export const AuthProvider = ({ children }) => {
+//     return(
+//         <AuthContext.Provider value={{token, setToken}}>
+//             {children}
+//         </AuthContext.Provider>
+//     )
+// }
+
+// export default AuthProvider;
+
+const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [token, setToken] = useState(() => localStorage.getItem('token') || '');
 
@@ -49,3 +60,5 @@ export const AuthProvider = ({ children }) => {
         </AuthContext.Provider>
     );
 };
+
+export default AuthProvider;

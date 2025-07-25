@@ -21,13 +21,12 @@ const Login = () => {
     const handleSubmit = async (e) => {
       e.preventDefault();
       try {
-        // Replace this with your actual API endpoint
-        const response = await axios.post('/api/login/', formData);
+        const response = await axios.post('http://127.0.0.1:8000/api/login/', formData);
         // Handle token storage and routing
         localStorage.setItem('token', response.data.token);
-        navigate('/dashboard');
+        navigate('/home');
       } catch (err) {
-        console.error('Login failed:', err);
+        console.error('Login failed:', err.response?.data || err.message);
         alert('Invalid credentials.');
       }
     };
@@ -37,7 +36,7 @@ const Login = () => {
       backgroundSize: 'cover',
       backgroundPosition: 'center',
       backgroundRepeat: 'no-repeat',
-      minHeight: '100vh', // Ensures full vertical coverage
+      minHeight: '100vh', 
       width: '100%',
       display: 'flex',
       flexDirection: 'column',
@@ -52,6 +51,18 @@ const Login = () => {
           <a href="/">WELLURANCE</a>
         </h1>
         <form onSubmit={handleSubmit} className="bg-white p-8 rounded shadow-md w-80 space-y-4">
+          <div>
+            <label className="block text-sm font-medium text-gray-700">Username</label>
+            <input
+              type="text"
+              name="username"
+              className="mt-1 block w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-amber-500 focus:border-amber-500"
+              value={formData.username}
+              onChange={handleChange}
+              required
+            />
+          </div>
+
           <div>
             <label className="block text-sm font-medium text-gray-700">Email</label>
             <input
@@ -84,10 +95,7 @@ const Login = () => {
               value={formData.role}
               onChange={handleChange}
             >
-              <option value="ADMIN">Administrator</option>
               <option value="DISPATCHER">Dispatcher</option>
-              <option value="AMBULANCE">Ambulance Team</option>
-              <option value="FIRE">Firefighter Team</option>
               <option value="CIVILIAN">Civilian</option>
             </select>
           </div>

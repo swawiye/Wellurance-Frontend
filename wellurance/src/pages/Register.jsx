@@ -94,10 +94,7 @@ const SignUp = () => {
             value={formData.role}
             onChange={handleChange}
           >
-            <option value="ADMIN">Administrator</option>
             <option value="DISPATCHER">Dispatcher</option>
-            <option value="AMBULANCE">Ambulance Team</option>
-            <option value="FIRE">Firefighter Team</option>
             <option value="CIVILIAN">Civilian</option>
           </select>
         </div>
