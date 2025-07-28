@@ -1,18 +1,6 @@
-import React, {useState, useEffect} from 'react';
-import AuthContext from './AuthContext';
+import {useState, useEffect} from 'react';
 import axios from 'axios';
-
-// const AuthProvider = ({children}) => {
-//     const [token, setToken] = useState(localStorage.getItem('token'));
-
-//     return(
-//         <AuthContext.Provider value={{token, setToken}}>
-//             {children}
-//         </AuthContext.Provider>
-//     )
-// }
-
-// export default AuthProvider;
+import {AuthContext} from './AuthContext';
 
 const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
@@ -36,10 +24,10 @@ const AuthProvider = ({ children }) => {
 
     const login = async (email, password) => {
         try {
-            const res = await axios.post('http://127.0.0.1:8000/auth/token/login/', { email, password });
+            const res = await axios.post('http://127.0.0.1:8000/auth/token/login/', { username: email, password });
             setToken(res.data.auth_token);
             localStorage.setItem('token', res.data.auth_token);
-        } catch (error) {
+        } catch {
             throw new Error('Login failed. Please check your credentials.');
         }
     };
@@ -50,7 +38,6 @@ const AuthProvider = ({ children }) => {
         setUser(null);
     };
 
-    // Extract user role if available (optional depending on your API)
     const role = user?.role || null;
     const isAdmin = role === 'admin';
 

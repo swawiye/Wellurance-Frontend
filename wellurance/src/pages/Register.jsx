@@ -10,6 +10,7 @@ const SignUp = () => {
     password: '',
     phone: '',
     role: 'CIVILIAN', // default role
+    address: '', 
     is_verified: false, // default verified status (can be true based on admin verification)
   });
 
@@ -33,11 +34,11 @@ const SignUp = () => {
   };
 
   return (
-    <div className="relative h-screen w-full bg-gray-900 flex flex-col items-center justify-center space-y-6">
-      <h1 className="text-2xl font-bold text-amber-600 mt-5">
+    <div className="min-h-screen bg-gray-900 flex flex-col items-center justify-center py-10">
+      <h1 className="text-3xl font-bold text-amber-600 mb-6">
         <a href="/">WELLURANCE</a>
       </h1>
-      <form onSubmit={handleSubmit} className="bg-white p-8 rounded shadow-md w-80 space-y-4">
+      <form onSubmit={handleSubmit} className="bg-white p-8 rounded-xl shadow-md w-80 space-y-4">
         <div>
           <label className="block text-sm font-medium text-gray-700">Username</label>
           <input
@@ -99,6 +100,18 @@ const SignUp = () => {
           </select>
         </div>
 
+        <div>
+          <label className="block text-sm font-medium text-gray-700">Address</label>
+          <input
+            type="text"
+            name="address"
+            className="mt-1 block w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-amber-500 focus:border-amber-500"
+            value={formData.address}
+            onChange={handleChange}
+            required
+          />
+        </div>
+
         <button
           type="submit"
           className="w-full bg-amber-600 text-white py-2 px-4 rounded hover:bg-amber-700"
@@ -107,15 +120,13 @@ const SignUp = () => {
           Register
         </button>
       </form>
-
-      <div className="relative h-screen w-full bg-gray-900 flex flex-col items-center justify-center space-y-6">
-        <p className="text-sm text-white mt-2">
-          Already have an account?{' '}
-          <Link to="/login" className="text-amber-500 hover:underline">
-            Log in
-          </Link>
-        </p>
-      </div>
+      
+      <p className="text-sm text-white mt-2">
+        Already have an account?{' '}
+        <Link to="/login" className="text-amber-500 hover:underline">
+          Log in
+        </Link>
+      </p>
     </div>
   );
 };

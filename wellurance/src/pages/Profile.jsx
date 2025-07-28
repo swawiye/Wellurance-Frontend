@@ -1,7 +1,19 @@
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import bgImg from '../assets/Wellurance Landing image.png';
+import { AuthContext } from './AuthContext';
+import { useContext } from 'react';
 
 function Profile() {
+    const {user} = useContext(AuthContext);
+
+    const {logout} = useContext(AuthContext);
+    const navigate = useNavigate();
+
+    const handleLogout = () => {
+      logout();
+      navigate('/');
+    };
+
     const bg = {
       backgroundImage: `url(${bgImg})`,
       backgroundSize: 'cover',
@@ -55,11 +67,12 @@ function Profile() {
             <h2 className="text-3xl font-bold text-amber-600 mb-6 text-center">User Profile</h2>    
             <form className="space-y-6">
               <div>
-                <label className="block text-sm font-medium mb-1 text-gray-700">Full Name</label>
+                <label className="block text-sm font-medium mb-1 text-gray-700">Userame</label>
                 <input
                   type="text"
                   className="w-full p-3 border border-gray-300 rounded-md bg-white"
-                  placeholder="John Doe"
+                  value = {user?.username || ''}
+                  readOnly
                 />
               </div>    
               <div>
@@ -67,7 +80,8 @@ function Profile() {
                 <input
                   type="email"
                   className="w-full p-3 border border-gray-300 rounded-md bg-white"
-                  placeholder="john@example.com"
+                  value = {user?.email || ''}
+                  readOnly
                 />
               </div>    
               <div>
@@ -75,7 +89,17 @@ function Profile() {
                 <input
                   type="text"
                   className="w-full p-3 border border-gray-300 rounded-md bg-white"
-                  placeholder="+254 712 345 678"
+                  value = {user?.phone_number || ''}
+                  readOnly
+                />
+              </div>    
+              <div>
+                <label className="block text-sm font-medium mb-1 text-gray-700">Role</label>
+                <input
+                  type="text"
+                  className="w-full p-3 border border-gray-300 rounded-md bg-white"
+                  value = {user?.role || ''}
+                  readOnly
                 />
               </div>    
               <div>
@@ -83,7 +107,17 @@ function Profile() {
                 <input
                   type="text"
                   className="w-full p-3 border border-gray-300 rounded-md bg-white"
-                  placeholder="123 Main Street, Nairobi"
+                  value = {user?.address || ''}
+                  readOnly
+                />
+              </div>  
+              <div>  
+                <label className="block text-sm font-medium mb-1 text-gray-700">Password</label>
+                <input
+                  type="text"
+                  className="w-full p-3 border border-gray-300 rounded-md bg-white"
+                  value = {user?.password || ''}
+                  readOnly
                 />
               </div>    
               <button
@@ -100,8 +134,9 @@ function Profile() {
             <button
                 type="submit"
                 className="w-60 bg-red-600 text-white py-3 rounded-lg font-bold hover:bg-amber-600 transition"
+                onClick={handleLogout}
               >
-                <a href="/dashboard">Sign Out</a>
+              Sign Out
             </button>
         </div> 
 
@@ -121,10 +156,9 @@ function Profile() {
             <div className="space-y-4">
               <h4 className="text-amber-600 font-semibold text-lg">Quick Links</h4>
               <ul className="space-y-2">
-                <li><a href="/" className="text-gray-300 hover:text-amber-600 transition">Home</a></li>
+                <li><a href="/home" className="text-gray-300 hover:text-amber-600 transition">Home</a></li>
                 <li><a href="/services" className="text-gray-300 hover:text-amber-600 transition">Emergency Services</a></li>
                 <li><a href="/about" className="text-gray-300 hover:text-amber-600 transition">About Us</a></li>
-                <li><a href="/dashboard" className="text-gray-300 hover:text-amber-600 transition">Dashboard</a></li>
               </ul>
             </div>  
             <div className="space-y-4">

@@ -99,10 +99,9 @@ function About() {
                     <div className="space-y-4">
                         <h4 className="text-amber-600 font-semibold text-lg">Quick Links</h4>
                         <ul className="space-y-2">
-                            <li><a href="/" className="text-gray-300 hover:text-amber-600 transition">Home</a></li>
+                            <li><a href="/home" className="text-gray-300 hover:text-amber-600 transition">Home</a></li>
                             <li><a href="/services" className="text-gray-300 hover:text-amber-600 transition">Emergency Services</a></li>
                             <li><a href="/about" className="text-gray-300 hover:text-amber-600 transition">About Us</a></li>
-                            <li><a href="/dashboard" className="text-gray-300 hover:text-amber-600 transition">Dashboard</a></li>
                         </ul>
                     </div>
 

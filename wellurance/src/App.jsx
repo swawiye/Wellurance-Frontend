@@ -7,22 +7,26 @@ import Profile from './pages/Profile';
 import Login from './pages/LogIn';
 import SignUp from './pages/Register';
 import AdminDash from './pages/AdminDash';
-// import { AuthContext } from './pages/AuthContext';
+import EmergencyForm from './pages/EForm';
+import AuthProvider from './pages/AuthProvider';
 
 function App() {
   return (
-    <Router>
-      <Routes>
-        <Route path='/' element={<Dashboard/>}/>
-        <Route path='/register' element={<SignUp/>}/>
-        <Route path='/login' element={<Login/>}/>
-        <Route path='/services' element={<EmergencyServices/>}/>
-        <Route path='/about' element={<About/>}/>
-        <Route path='/home' element={<Home/>}/>
-        <Route path='/profile' element={<Profile/>}/>
-        <Route path='/admindash' element={<AdminDash/>}/>
-      </Routes>
-    </Router>
+    <AuthProvider>
+      <Router>
+        <Routes>
+          <Route path='/' element={<Dashboard/>}/>
+          <Route path='/register' element={<SignUp/>}/>
+          <Route path='/login' element={<Login/>}/>
+          <Route path='/services' element={<EmergencyServices/>}/>
+          <Route path='/about' element={<About/>}/>
+          <Route path='/home' element={<Home/>}/>
+          <Route path='/profile' element={<Profile/>}/>
+          <Route path='/admindash' element={<AdminDash/>}/>
+          <Route path='/emergency' element={<EmergencyForm/>}/>
+        </Routes>
+      </Router>
+    </AuthProvider>
   )
 }
 

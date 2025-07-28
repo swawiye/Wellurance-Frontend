@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import { useContext, useState } from 'react';
 import axios from 'axios';
 import { AuthContext } from './AuthContext';
 
@@ -24,6 +24,7 @@ function EmergencyForm() {
           emergency_type: form.emergency_type, 
           status: 'REPORTED',
           is_verified: false,
+          name: form.name,
         }, {
           headers: { Authorization: `Token ${token}` }
         });
@@ -41,27 +42,40 @@ function EmergencyForm() {
             <label className="block text-sm font-medium mb-1 text-left">FULL NAME</label>
             <input 
               type="text" 
+              name="name"
+              value={form.name}
+              onChange={handleChange}
               className="w-full p-2 border border-white bg-white" 
               placeholder="John Doe" 
-              required 
+              required
             />
           </div>
           <div>
             <label className="block text-sm font-medium mb-1 text-left">LOCATION</label>
             <input 
               type="text" 
+              name="address"
+              value={form.address}
+              onChange={handleChange}
               className="w-full p-2 border border-white bg-white" 
               placeholder="123 Main St, City" 
-              required 
+              required  
             />
           </div>
           <div>
             <label className="block text-sm font-medium mb-1 text-left">EMERGENCY</label>
-            <select className="w-full p-2 border border-white bg-white">
-              <option>Medical Emergency</option>
-              <option>Fire Outbreak</option>
-              <option>Accident</option>
-              <option>Other</option>
+            <select
+              name="emergency_type"
+              value={form.emergency_type}
+              onChange={handleChange}
+              className="w-full p-2 border border-white bg-white"
+              required
+            >
+              <option value="" disabled>Select type</option>
+              <option value="Medical Emergency">Medical Emergency</option>
+              <option value="Fire Outbreak">Fire Outbreak</option>
+              <option value="Accident">Accident</option>
+              <option value="Other">Other</option>
             </select>
           </div>
         <div>
