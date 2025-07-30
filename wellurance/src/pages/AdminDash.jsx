@@ -15,19 +15,22 @@ function AdminDash() {
     if (token && user?.role === 'DISPATCHER') {
       const headers = { Authorization: `Token ${token}` };
       
-      axios.get('/api/reports/', { headers })
-        .then(res => setReports(res.data))
+      axios.get('http://127.0.0.1:8000/api/reports/', { headers })
+        .then(res => {
+          const data = Array.isArray(res.data) ? res.data : res.data.results;
+          setReports(data || [])
+        })
         .catch(err => console.error('Reports fetch failed:', err));
 
-      axios.get('/api/responderteam/', { headers })
+      axios.get('http://127.0.0.1:8000/api/teams/', { headers })
         .then(res => setTeams(res.data))
         .catch(err => console.error('Teams fetch failed:', err));
 
-      axios.get('/api/vehicles/', { headers })
+      axios.get('http://127.0.0.1:8000/api/vehicles/', { headers })
         .then(res => setVehicles(res.data))
         .catch(err => console.error('Vehicles fetch failed:', err));
 
-      axios.get('/api/notifications/', { headers })
+      axios.get('http://127.0.0.1:8000/api/notifications/', { headers })
         .then(res => setNotifications(res.data))
         .catch(err => console.error('Notifications fetch failed:', err));
     }
