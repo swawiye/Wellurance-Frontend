@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import bgImg from '../assets/Wellurance Landing image.png';
 
 const Login = () => {
     const navigate = useNavigate();
     const [formData, setFormData] = useState({
+      username: '',
       email: '',
       password: '',
       role: 'CIVILIAN', // optional for backend filtering or routing
@@ -22,12 +23,26 @@ const Login = () => {
       e.preventDefault();
       try {
         const response = await axios.post('http://127.0.0.1:8000/api/login/', formData);
-        // Handle token storage and routing
-        localStorage.setItem('token', response.data.token);
-        navigate('/home');
+
+        console.log('Response data: ', response.data);
+      
+        if (response.data && response.data.token && response.data.user) {
+          const {token, user} = response.data;
+          // Store token and user info
+          localStorage.setItem('token', token);
+          localStorage.setItem('user', JSON.stringify(user));
+          
+          if (user.role == 'DISPATCHER') {
+            navigate('/admindash')
+          } else {
+            navigate('/home')
+          }
+        } else {
+          throw new Error('Invalid response structure')
+        }
       } catch (err) {
         console.error('Login failed:', err.response?.data || err.message);
-        alert('Invalid credentials.');
+        alert('Invalid credentials or unexpected response from the server.');
       }
     };
 
@@ -104,7 +119,7 @@ const Login = () => {
             type="submit"
             className="w-full bg-amber-600 text-white py-2 px-4 rounded hover:bg-amber-700"
           >
-            <Link to="/home">Log In</Link>
+            Log In
           </button>
         </form>
       </div>

@@ -20,7 +20,7 @@ function About() {
               style={bg}
             >
               <h1 className="text-2xl font-bold text-amber-600">
-                <a href="/">WELLURANCE</a>
+                <a href="/home">WELLURANCE</a>
               </h1>
               <div className="flex space-x-6">
                 <NavLink

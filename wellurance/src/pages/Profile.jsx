@@ -4,9 +4,8 @@ import { AuthContext } from './AuthContext';
 import { useContext } from 'react';
 
 function Profile() {
-    const {user} = useContext(AuthContext);
+    const {user, logout} = useContext(AuthContext);
 
-    const {logout} = useContext(AuthContext);
     const navigate = useNavigate();
 
     const handleLogout = () => {
@@ -25,6 +24,15 @@ function Profile() {
       alignItems: 'center',
       animation: 'fadeIn 1.5s ease-in-out',
     };  
+
+    if (!user) {
+      return (
+        <div className="h-screen flex items-center justify-center bg-gray-100">
+          <p className="text-gray-700 text-lg">Loading user profile...</p>
+        </div>
+      )
+    }
+
     return (
       <div>
         <div
@@ -32,7 +40,7 @@ function Profile() {
           style={bg}
         >
           <h1 className="text-2xl font-bold text-amber-600">
-            <a href="/">WELLURANCE</a>
+            <a href="/home">WELLURANCE</a>
           </h1>
           <div className="flex space-x-6">
             <NavLink
@@ -111,15 +119,6 @@ function Profile() {
                   readOnly
                 />
               </div>  
-              <div>  
-                <label className="block text-sm font-medium mb-1 text-gray-700">Password</label>
-                <input
-                  type="text"
-                  className="w-full p-3 border border-gray-300 rounded-md bg-white"
-                  value = {user?.password || ''}
-                  readOnly
-                />
-              </div>    
               <button
                 type="submit"
                 className="bg-red-600 text-white px-6 py-3 rounded-md font-semibold hover:bg-amber-600 transition"
