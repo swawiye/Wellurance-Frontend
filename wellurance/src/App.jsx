@@ -1,21 +1,18 @@
-import {BrowserRouter as Router, Routes, Route, NavLink} from 'react-router-dom'
+import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
 import { Suspense, lazy } from 'react';
 import AuthProvider from './pages/AuthProvider';
 
-const Dashboard = lazy(() => ('./pages/Dashboard'));
-const Home = lazy(() => ('./pages/Home'));
-const EmergencyServices = lazy(() => ('./pages/Services'));
-const About = lazy(() => ('./pages/About'));
-const Profile = lazy(() => ('./pages/Profile'));
-const Login = lazy(() => ('./pages/LogIn'));
-const SignUp = lazy(() => ('./pages/Register'));
-const AdminDash = lazy(() => ('./pages/AdminDash'));
-const EmergencyForm = lazy(() => ('./pages/EForm'));
+const Dashboard = lazy(() => import('./pages/Dashboard'));
+const Home = lazy(() => import('./pages/Home'));
+const EmergencyServices = lazy(() => import('./pages/Services'));
+const About = lazy(() => import('./pages/About'));
+const Profile = lazy(() => import('./pages/Profile'));
+const Login = lazy(() => import('./pages/LogIn'));
+const SignUp = lazy(() => import('./pages/Register'));
+const AdminDash = lazy(() => import('./pages/AdminDash'));
+const EmergencyForm = lazy(() => import('./pages/EForm'));
 
 const Loading = () => <div>Loading ...</div>;
-
-
-
 
 function App() {
   return (
