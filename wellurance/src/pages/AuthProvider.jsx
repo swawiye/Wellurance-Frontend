@@ -63,11 +63,31 @@ const AuthProvider = ({ children }) => {
     setUser(null);
   };
 
+  const updateUser = async (updatedData) => {
+    try {
+      const res = await axios.patch(
+        'http://127.0.0.1:8000/auth/users/me/', 
+        updatedData,
+        {
+          headers: { Authorization: `Token ${token}` },
+        }
+      );
+      
+      const updatedUser = { ...user, ...res.data };
+      setUser(updatedUser);
+      localStorage.setItem('user', JSON.stringify(updatedUser));
+      return updatedUser;
+    } catch (error) {
+      console.error('Update failed:', error);
+      throw error;
+    }
+  };
+
   const role = user?.role || null;
   const isAdmin = role === 'DISPATCHER'; 
 
   return (
-    <AuthContext.Provider value={{ user, token, role, isAdmin, login, logout, loading }}>
+    <AuthContext.Provider value={{ user, token, role, isAdmin, login, logout, loading, updateUser }}>
       {children}
     </AuthContext.Provider>
   );
