@@ -1,30 +1,39 @@
 import {BrowserRouter as Router, Routes, Route, NavLink} from 'react-router-dom'
-import Dashboard from './pages/Dashboard';
-import Home from './pages/Home';
-import EmergencyServices from './pages/Services';
-import About from './pages/About';
-import Profile from './pages/Profile';
-import Login from './pages/LogIn';
-import SignUp from './pages/Register';
-import AdminDash from './pages/AdminDash';
-import EmergencyForm from './pages/EForm';
+import { Suspense, lazy } from 'react';
 import AuthProvider from './pages/AuthProvider';
+
+const Dashboard = lazy(() => ('./pages/Dashboard'));
+const Home = lazy(() => ('./pages/Home'));
+const EmergencyServices = lazy(() => ('./pages/Services'));
+const About = lazy(() => ('./pages/About'));
+const Profile = lazy(() => ('./pages/Profile'));
+const Login = lazy(() => ('./pages/LogIn'));
+const SignUp = lazy(() => ('./pages/Register'));
+const AdminDash = lazy(() => ('./pages/AdminDash'));
+const EmergencyForm = lazy(() => ('./pages/EForm'));
+
+const Loading = () => <div>Loading ...</div>;
+
+
+
 
 function App() {
   return (
     <AuthProvider>
       <Router>
-        <Routes>
-          <Route path='/' element={<Dashboard/>}/>
-          <Route path='/register' element={<SignUp/>}/>
-          <Route path='/login' element={<Login/>}/>
-          <Route path='/services' element={<EmergencyServices/>}/>
-          <Route path='/about' element={<About/>}/>
-          <Route path='/home' element={<Home/>}/>
-          <Route path='/profile' element={<Profile/>}/>
-          <Route path='/admindash' element={<AdminDash/>}/>
-          <Route path='/emergency' element={<EmergencyForm/>}/>
-        </Routes>
+        <Suspense fallback={<Loading/>}>
+          <Routes>
+            <Route path='/' element={<Dashboard/>}/>
+            <Route path='/register' element={<SignUp/>}/>
+            <Route path='/login' element={<Login/>}/>
+            <Route path='/services' element={<EmergencyServices/>}/>
+            <Route path='/about' element={<About/>}/>
+            <Route path='/home' element={<Home/>}/>
+            <Route path='/profile' element={<Profile/>}/>
+            <Route path='/admindash' element={<AdminDash/>}/>
+            <Route path='/emergency' element={<EmergencyForm/>}/>
+          </Routes>
+        </Suspense>
       </Router>
     </AuthProvider>
   )
