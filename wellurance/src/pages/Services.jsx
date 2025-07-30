@@ -1,5 +1,7 @@
-import {NavLink} from 'react-router-dom';
+import {NavLink, useNavigate} from 'react-router-dom';
 import bgImg from '../assets/Wellurance Landing image.png';
+import { AuthContext } from './AuthContext';
+import { useContext } from 'react';
 
 function EmergencyServices() {
     const bg = {
@@ -13,48 +15,93 @@ function EmergencyServices() {
       alignItems: 'center',
       animation: 'fadeIn 1.5s ease-in-out',
     };
+
+    const {logout} = useContext(AuthContext);
+
+    const navigate = useNavigate();
+
+    const handleLogout = () => {
+      logout();
+      navigate('/');
+    };
+    
     return (
         <div>
-          {/* Navbar */}
           <header className="bg-gray-900 text-white shadow-md fixed top-0 left-0 w-full z-50">
             <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="flex items-center justify-between h-16">
+                {/* Logo */}
                 <div className="flex-shrink-0">
-                  <a href="#hero" className="text-2xl font-bold text-amber-600 hover:text-amber-500 transition">
+                  <a href="/home" className="text-2xl font-bold text-amber-600 hover:text-amber-500 transition">
                     WELLURANCE
                   </a>
                 </div>
-                <nav className="hidden md:flex space-x-8">
-                  {[
-                    { to: "/services", label: "Emergency Services" },
-                    { to: "/about", label: "About Us" },
-                    { to: "/profile", label: "Profile" },
-                  ].map(({ to, label }) => (
-                    <NavLink
-                      key={to}
-                      to={to}
-                      className={({ isActive }) =>
-                        `text-gray-300 hover:text-amber-600 transition font-medium ${
-                          isActive
-                            ? "text-amber-600 underline underline-offset-4 decoration-amber-500"
-                            : ""
-                        }`
-                      }
-                    >
-                      {label}
-                    </NavLink>
-                  ))}
+
+                {/* Navigation links */}
+                <nav className="hidden md:flex space-x-8 items-center">
+                  <NavLink
+                    to="/services"
+                    className={({ isActive }) =>
+                      `text-gray-300 hover:text-amber-600 transition font-medium ${
+                        isActive ? "text-amber-600 underline underline-offset-4 decoration-amber-500" : ""
+                      }`
+                    }
+                  >
+                    Emergency Services
+                  </NavLink>
+                  <NavLink
+                    to="/about"
+                    className={({ isActive }) =>
+                      `text-gray-300 hover:text-amber-600 transition font-medium ${
+                        isActive ? "text-amber-600 underline underline-offset-4 decoration-amber-500" : ""
+                      }`
+                    }
+                  >
+                    About Us
+                  </NavLink>
+                  
+                  {/* Profile dropdown */}
+                  <div className="relative group">
+                    <button className="flex items-center focus:outline-none">
+                      <svg
+                        className="w-6 h-6 text-gray-300 group-hover:text-amber-600 transition"
+                        fill="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
+                      </svg>
+                    </button>
+                  
+                    {/* Dropdown menu */}
+                    <div className="absolute right-0 mt-2 w-40 bg-white text-gray-800 rounded-md shadow-lg opacity-0 group-hover:opacity-100 invisible group-hover:visible transition-all duration-200 z-50">
+                      <NavLink
+                        to="/profile"
+                        className="block px-4 py-2 hover:bg-amber-100 transition"
+                      >
+                        Update Profile
+                      </NavLink>
+                      <button
+                        onClick={handleLogout}
+                        className="w-full text-left px-4 py-2 hover:bg-amber-100 transition"
+                      >
+                        Sign Out
+                      </button>
+                    </div>
+                  </div>
                 </nav>
               </div>
             </div>
           </header>
-                
+ 
           {/* Hero Section */}
           <section
             id="hero"
             className="relative h-screen w-full bg-black flex flex-col items-center justify-center space-y-6 pt-16"
             style={bg}
           >
+            <h1 className="text-xl md:text-4xl font-bold text-amber-500 drop-shadow-sm">
+             Your Safety, Our Priority
+            </h1>
           </section>
 
           <div className="bg-gray-50 bg-opacity-90 max-w-full w-full min-h-screen py-20 px-4">
