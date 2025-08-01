@@ -13,13 +13,21 @@ const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     if (token && !user) {
+      // Get user data with role from our custom profile endpoint
       axios
-        .get('http://127.0.0.1:8000/auth/users/me/', {
+        .get('http://127.0.0.1:8000/api/profiles/me/', {
           headers: { Authorization: `Token ${token}` },
         })
         .then((res) => {
-          setUser(res.data);
-          localStorage.setItem('user', JSON.stringify(res.data));
+          // Combine basic user data with role from profile
+          const userData = {
+            id: res.data.id,
+            username: res.data.username,
+            email: res.data.email,
+            role: res.data.role
+          };
+          setUser(userData);
+          localStorage.setItem('user', JSON.stringify(userData));
         })
         .catch(() => {
           setUser(null);
@@ -44,13 +52,19 @@ const AuthProvider = ({ children }) => {
       setToken(newToken);
       localStorage.setItem('token', newToken);
 
-      // Fetch user info after login
-      const userRes = await axios.get('http://127.0.0.1:8000/auth/users/me/', {
+      // Fetch user info with role after login
+      const userRes = await axios.get('http://127.0.0.1:8000/api/profiles/me/', {
         headers: { Authorization: `Token ${newToken}` },
       });
 
-      setUser(userRes.data);
-      localStorage.setItem('user', JSON.stringify(userRes.data));
+      const userData = {
+        id: userRes.data.id,
+        username: userRes.data.username,
+        email: userRes.data.email,
+        role: userRes.data.role
+      };
+      setUser(userData);
+      localStorage.setItem('user', JSON.stringify(userData));
     } catch {
       throw new Error('Login failed. Please check your credentials.');
     }

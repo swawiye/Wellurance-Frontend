@@ -12,26 +12,39 @@ function AdminDash() {
   const [notifications, setNotifications] = useState([]);
 
   useEffect(() => {
+    console.log('AdminDash useEffect - token:', !!token, 'user:', user, 'role:', user?.role);
     if (token && user?.role === 'DISPATCHER') {
+      console.log('Fetching data for DISPATCHER user...');
       const headers = { Authorization: `Token ${token}` };
       
       axios.get('http://127.0.0.1:8000/api/reports/', { headers })
         .then(res => {
+          console.log('Reports response:', res.data);
           const data = Array.isArray(res.data) ? res.data : res.data.results;
-          setReports(data || [])
+          setReports(data || []);
+          console.log('Reports set to:', data);
         })
         .catch(err => console.error('Reports fetch failed:', err));
 
       axios.get('http://127.0.0.1:8000/api/teams/', { headers })
-        .then(res => setTeams(res.data))
+        .then(res => {
+          const data = Array.isArray(res.data) ? res.data : res.data.results;
+          setTeams(data || []);
+        })
         .catch(err => console.error('Teams fetch failed:', err));
 
       axios.get('http://127.0.0.1:8000/api/vehicles/', { headers })
-        .then(res => setVehicles(res.data))
+        .then(res => {
+          const data = Array.isArray(res.data) ? res.data : res.data.results;
+          setVehicles(data || []);
+        })
         .catch(err => console.error('Vehicles fetch failed:', err));
 
       axios.get('http://127.0.0.1:8000/api/notifications/', { headers })
-        .then(res => setNotifications(res.data))
+        .then(res => {
+          const data = Array.isArray(res.data) ? res.data : res.data.results;
+          setNotifications(data || []);
+        })
         .catch(err => console.error('Notifications fetch failed:', err));
     }
   }, [token, user]);
