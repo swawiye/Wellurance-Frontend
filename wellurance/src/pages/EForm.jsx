@@ -29,6 +29,12 @@ function EmergencyForm() {
           headers: { Authorization: `Token ${token}` }
         });
         alert('Emergency reported!');
+        setForm({
+          name: '',
+          address: '',
+          description: '',
+          emergency_type: '',
+        });
         } catch (err) {
           console.error(err);
           alert('Failed to report emergency.');

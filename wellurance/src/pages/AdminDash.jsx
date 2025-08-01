@@ -50,11 +50,11 @@ function AdminDash() {
         <Section title="Emergency Reports">
           {reports.length > 0 ? reports.map(r => (
             <Card key={r.id}>
-              <h2>{r.emergency?.name || '—'}: {r.description}</h2>
+              <h2>{r.emergency_type || '—'}: {r.description}</h2>
               <Detail label="Address" value={r.address} />
               <Detail label="Reported at" value={new Date(r.time_stamp).toLocaleString()} />
               <Detail label="Status" value={r.status} />
-              <Detail label="Reported by" value={r.reporter?.username || '—'} />
+              <Detail label="Reported by (user ID)" value={r.reporter || '—'} />
             </Card>
           )) : <p>No emergency reports found.</p>}
         </Section>
@@ -66,7 +66,7 @@ function AdminDash() {
               <h2>{t.team} — {t.name}</h2>
               <Detail label="Contact" value={t.contact} />
               <Detail label="Active" value={t.is_active ? 'Yes' : 'No'} />
-              <Detail label="Members" value={t.members.map(m => m.username).join(', ')} />
+              <Detail label="Members" value={Array.isArray(t.members) ? t.members.map(m => m.username || m).join(', ') : '—'} />
             </Card>
           )) : <p>No teams available.</p>}
         </Section>
@@ -76,7 +76,7 @@ function AdminDash() {
           {vehicles.length > 0 ? vehicles.map(v => (
             <Card key={v.id}>
               <h2>{v.vehicle_type} — {v.license_plate}</h2>
-              <Detail label="Team" value={v.team?.name || '—'} />
+              <Detail label="Team ID" value={v.team || '—'} />
               <Detail label="Capacity" value={v.capacity} />
               <Detail label="Active" value={v.is_active ? 'Yes' : 'No'} />
             </Card>
@@ -90,7 +90,7 @@ function AdminDash() {
               <h2>{n.title}</h2>
               <p>{n.message}</p>
               <Detail label="Type" value={n.notification_type} />
-              <Detail label="Related Incident" value={n.related_incident || '—'} />
+              <Detail label="Incident ID" value={n.related_incident || '—'} />
               <Detail label="Read?" value={n.is_read ? 'Yes' : 'No'} />
               <Detail label="Sent at" value={new Date(n.created_at).toLocaleString()} />
             </Card>
@@ -100,8 +100,6 @@ function AdminDash() {
     </div>
   );
 }
-
-// --- Helper components --- //
 
 const CenteredMessage = ({ text }) => (
   <div className="h-screen flex items-center justify-center bg-gray-900 text-white">

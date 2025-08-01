@@ -60,10 +60,9 @@ function Dashboard() {
                     <p className="text-xl text-black text-center mt-10">
                         Wellurance is an emergency services platform is built to streamline real-time coordination between 
                         ambulance teams, healthcare providers, and firefighting units. It allows you to report emergencies 
-                        instantly, while dispatchers manage and track responders live through intuitive, map-based dashboards. 
-                        By enabling faster response times, smarter resource deployment, and stronger inter-agency collaboration, 
-                        Wellurance enhances public safety—while upholding the highest standards of data security and regulatory 
-                        compliance.
+                        instantly, while dispatchers manage and track responders. By enabling faster response times, smarter 
+                        resource deployment, and stronger inter-agency collaboration. Wellurance enhances public safety—while 
+                        upholding the highest standards of data security and regulatory compliance.
                     </p>
                 </div>
             </div>
