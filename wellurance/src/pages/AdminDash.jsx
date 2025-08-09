@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect } from 'react'; //useState
 import { AuthContext } from './AuthContext';
 import axios from 'axios';
 import bgImg from '../assets/Wellurance Landing image.png';
@@ -6,10 +6,10 @@ import bgImg from '../assets/Wellurance Landing image.png';
 function AdminDash() {
   const { token, user, loading } = useContext(AuthContext);
 
-  const [reports, setReports] = useState([]);
-  const [teams, setTeams] = useState([]);
-  const [vehicles, setVehicles] = useState([]);
-  const [notifications, setNotifications] = useState([]);
+  // const [reports, setReports] = useState([]);
+  // const [teams, setTeams] = useState([]);
+  // const [vehicles, setVehicles] = useState([]);
+  // const [notifications, setNotifications] = useState([]);
 
   useEffect(() => {
     if (token && user?.role === 'DISPATCHER') {
@@ -48,6 +48,7 @@ function AdminDash() {
 
         {/* Emergency Reports */}
         <Section title="Emergency Reports">
+        {/* 
           {reports.length > 0 ? reports.map(r => (
             <Card key={r.id}>
               <h2>{r.emergency_type || '—'}: {r.description}</h2>
@@ -57,10 +58,20 @@ function AdminDash() {
               <Detail label="Reported by (user ID)" value={r.reporter || '—'} />
             </Card>
           )) : <p>No emergency reports found.</p>}
+        */}
+        <div className="mb-8">
+          <div className="bg-white text-black p-4 rounded-sm text-md shadow-sm min-w-[300px]">
+            <p className="mb-2"><strong>Full Name:</strong> John Doe</p>
+            <p className="mb-2"><strong>Location:</strong> 123, Miami Park Lane</p>
+            <p className="mb-2"><strong>Emergency:</strong> Fire Outbreak</p>
+            <p><strong>Description:</strong> The entire house is on fire!!!</p>
+          </div>
+        </div>
         </Section>
 
         {/* Responder Teams */}
         <Section title="Responder Teams">
+          {/* 
           {teams.length > 0 ? teams.map(t => (
             <Card key={t.id}>
               <h2>{t.team} — {t.name}</h2>
@@ -69,10 +80,57 @@ function AdminDash() {
               <Detail label="Members" value={Array.isArray(t.members) ? t.members.map(m => m.username || m).join(', ') : '—'} />
             </Card>
           )) : <p>No teams available.</p>}
+           */}
+          <div className="mb-8">
+            <div className="flex flex-wrap gap-4">
+              {/* Firefighter Team */}
+              <div className="bg-white text-black p-4 rounded-sm text-md flex-1 min-w-[300px]">
+                <h2 className="font-semibold text-lg mb-2">Firefighter Team</h2>
+                <p><strong>Location:</strong> Station 12</p>
+                <p><strong>Respondents:</strong> 6</p>
+              </div>
+
+              {/* Ambulance Team */}
+              <div className="bg-white text-black p-4 rounded-sm text-md flex-1 min-w-[300px]">
+                <h2 className="font-semibold text-lg mb-2">Ambulance Team</h2>
+                <p><strong>Location:</strong> Medical Center B</p>
+                <p><strong>Respondents:</strong> 4</p>
+              </div>
+
+              {/* Firefighter Team */}
+              <div className="bg-white text-black p-4 rounded-sm text-md flex-1 min-w-[300px]">
+                <h2 className="font-semibold text-lg mb-2">Firefighter Team</h2>
+                <p><strong>Location:</strong> Station 8</p>
+                <p><strong>Respondents:</strong> 5</p>
+              </div>
+
+              {/* Ambulance Team */}
+              <div className="bg-white text-black p-4 rounded-sm text-md flex-1 min-w-[300px]">
+                <h2 className="font-semibold text-lg mb-2">Ambulance Team</h2>
+                <p><strong>Location:</strong> Emergency Hub A</p>
+                <p><strong>Respondents:</strong> 3</p>
+              </div>
+
+              {/* Firefighter Team */}
+              <div className="bg-white text-black p-4 rounded-sm text-md flex-1 min-w-[300px]">
+                <h2 className="font-semibold text-lg mb-2">Firefighter Team</h2>
+                <p><strong>Location:</strong> Station 3</p>
+                <p><strong>Respondents:</strong> 7</p>
+              </div>
+
+              {/* Ambulance Team */}
+              <div className="bg-white text-black p-4 rounded-sm text-md flex-1 min-w-[300px]">
+                <h2 className="font-semibold text-lg mb-2">Ambulance Team</h2>
+                <p><strong>Location:</strong> Emergency Hub B</p>
+                <p><strong>Respondents:</strong> 9</p>
+              </div>
+            </div>
+          </div>
         </Section>
 
         {/* Vehicles */}
         <Section title="Vehicles">
+          {/*
           {vehicles.length > 0 ? vehicles.map(v => (
             <Card key={v.id}>
               <h2>{v.vehicle_type} — {v.license_plate}</h2>
@@ -81,10 +139,36 @@ function AdminDash() {
               <Detail label="Active" value={v.is_active ? 'Yes' : 'No'} />
             </Card>
           )) : <p>No vehicles registered.</p>}
+          */}
+          <div className="mb-8">
+            <div className="flex flex-wrap gap-4">
+              {/* Support Vehicles */}
+              <div className="bg-white text-black p-4 rounded-sm text-md flex-1 min-w-[300px]">
+                <h2 className="font-semibold text-lg mb-2">Support Vehicles</h2>
+                <p><strong>ID:</strong> KOS 001</p>
+                <p><strong>ID:</strong> KOS 002</p>
+              </div>
+
+              {/* Fire Trucks */}
+              <div className="bg-white text-black p-4 rounded-sm text-md flex-1 min-w-[300px]">
+                <h2 className="font-semibold text-lg mb-2">Fire Trucks</h2>
+                <p><strong>ID:</strong> KAG 001</p>
+                <p><strong>ID:</strong> KAG 002</p>
+              </div>
+
+              {/* Ambulances */}
+              <div className="bg-white text-black p-4 rounded-sm text-md flex-1 min-w-[300px]">
+                <h2 className="font-semibold text-lg mb-2">Ambulances</h2>
+                <p><strong>ID:</strong> KMG 001</p>
+                <p><strong>ID:</strong> KMG 002</p>
+              </div>
+            </div>
+          </div>
         </Section>
 
         {/* Notifications */}
         <Section title="Recent Notifications">
+          {/* 
           {notifications.length > 0 ? notifications.map(n => (
             <Card key={n.id}>
               <h2>{n.title}</h2>
@@ -95,6 +179,7 @@ function AdminDash() {
               <Detail label="Sent at" value={new Date(n.created_at).toLocaleString()} />
             </Card>
           )) : <p>No notifications yet.</p>}
+          */}
         </Section>
       </div>
     </div>
